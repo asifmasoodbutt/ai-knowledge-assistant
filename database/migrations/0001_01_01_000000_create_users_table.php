@@ -11,13 +11,20 @@ return new class extends Migration
      */
     public function up(): void
     {
+        // "users" table purpose:
+        // Stores all application users who can:
+        // upload documents
+        // create chats
+        // interact with AI
+        // manage their own workspace
+
         Schema::create('users', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->rememberToken();
+            $table->id()->comment('Unique identifier for each user');
+            $table->string('name')->comment('Full name of the user');
+            $table->string('email')->unique()->comment('Email address of the user');
+            $table->timestamp('email_verified_at')->nullable()->comment('Timestamp of when the email was verified');
+            $table->string('password')->comment('Hashed password of the user');
+            $table->rememberToken()->comment('Token used for "remember me" functionality');
             $table->timestamps();
         });
 
