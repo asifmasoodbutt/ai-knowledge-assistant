@@ -1,19 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\API;
+namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
 use App\Services\UserService;
-use App\Traits\ApiResponseTrait;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    use ApiResponseTrait;
-
-    public function __construct(
-        protected UserService $userService
-    ) {}
+    public function __construct(protected UserService $userService) {}
 
     public function index()
     {
